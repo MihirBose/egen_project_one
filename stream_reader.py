@@ -1,6 +1,7 @@
 from requests import Session
 import requests
-from os import environ
+import os
+#from os import environ
 from time import sleep
 import logging
 from concurrent import futures
