@@ -29,7 +29,7 @@ class PublishToPubsub:
 
         if 200 <= res.status_code <= 400:
             logging.info(f"Response - {res.status_code}:{res.text}")
-            print ("SUCCESS!!!")
+            print (f"SUCCESS!!!")
             return res.text
         else:
             raise Exception(f"failed to fetch API data - {res.status_code}:{res.text}")
@@ -57,9 +57,9 @@ class PublishToPubsub:
 if __name__ == "__main__":
 
     for i in range(100):
-        print ("hello!!!")
+        print (f"hello!!!")
         svc = PublishToPubsub()
         message = svc.get_guardian_data()
         svc.publish_message_to_topic(message)
-        print (message)
+        #print (message)
         sleep(3)
