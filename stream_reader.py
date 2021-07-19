@@ -37,7 +37,7 @@ class PublishToPubsub:
 
 if __name__ == "__main__":
 
-    for i in range(3):
+    for i in range(100):
         svc = PublishToPubsub()
         message = svc.get_guardian_data()
         print (message)
