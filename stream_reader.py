@@ -29,7 +29,7 @@ class PublishToPubsub:
 
         if 200 <= res.status_code <= 400:
             logging.info(f"Response - {res.status_code}:{res.text}")
-            #print ("SUCCESS!!!")
+            print ("SUCCESS!!!")
             return res.text
         else:
             raise Exception(f"failed to fetch API data - {res.status_code}:{res.text}")
