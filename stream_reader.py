@@ -13,7 +13,7 @@ guardian_url = " https://content.guardianapis.com/search"
 
 class PublishToPubsub:
     def __init__(self):
-        self.project_id = "Egen-Project-1"
+        self.project_id = "egen-project-1"
         self.topic_id = "guardian_stream"
         self.publisher_client = PublisherClient()
         self.topic_path = self.publisher_client.topic_path(self.project_id, self.topic_id)
