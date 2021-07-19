@@ -2,7 +2,7 @@ from requests import Session
 import requests
 from os import environ
 from time import sleep
-import logging
+#import logging
 # from concurrent import futures
 # from google.cloud.pubsub_v1 import PublisherClient
 # from google.cloud.pubsub_v1.publisher.futures import Future
