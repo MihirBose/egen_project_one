@@ -10,6 +10,7 @@ from google.cloud.pubsub_v1.publisher.futures import Future
 
 
 guardian_url = " https://content.guardianapis.com/search"
+os.environ["GOOGLE_CLOUD_PROJECT"] = "egen-project-1"
 
 class PublishToPubsub:
     def __init__(self):
