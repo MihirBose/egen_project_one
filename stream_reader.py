@@ -28,7 +28,8 @@ class PublishToPubsub:
         res = ses.get(guardian_url, params=params, stream=True)
 
         if 200 <= res.status_code <= 400:
-            print ("SUCCESS!!!")
+            logging.info(f"Response - {res.status_code}:{res.text}")
+            #print ("SUCCESS!!!")
             return res.text
         else:
             raise Exception(f"failed to fetch API data - {res.status_code}:{res.text}")
