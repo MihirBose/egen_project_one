@@ -7,7 +7,7 @@ import logging
 from concurrent import futures
 from google.cloud.pubsub_v1 import PublisherClient
 from google.cloud.pubsub_v1.publisher.futures import Future
-
+from google.cloud import secretmanager
 
 
 guardian_url = " https://content.guardianapis.com/search"
@@ -17,14 +17,29 @@ class PublishToPubsub:
     def __init__(self):
         self.project_id = "egen-project-1"
         self.topic_id = "guardian_stream"
+        self.secret_id = "api-key"
         self.publisher_client = PublisherClient()
         self.topic_path = self.publisher_client.topic_path(self.project_id, self.topic_id)
         self.publish_futures = []
 
+    def access_secret_version(self, version_id="latest"):
+        # Create the Secret Manager client.
+        client = secretmanager.SecretManagerServiceClient()
+
+        # Build the resource name of the secret version.
+        name = f"projects/{self.project_id}/secrets/{self.secret_id}/versions/{version_id}"
+
+        # Access the secret version.
+        response = client.access_secret_version(name=name)
+
+        # Return the decoded payload.
+        return response.payload.data.decode('UTF-8')
+
     def get_guardian_data(self) -> str:
 
         params = {
-            "api-key" : "d36c74d5-11af-4020-a0d1-988489020d11"
+            #"api-key" : "d36c74d5-11af-4020-a0d1-988489020d11"
+            self.secret_id : self.access_secret_version()
         }
         ses = Session()
         res = ses.get(guardian_url, params=params, stream=True)
@@ -58,7 +73,7 @@ class PublishToPubsub:
 
 if __name__ == "__main__":
 
-    for i in range(10):
+    for i in range(5):
         print (f"hello!!!")
         svc = PublishToPubsub()
         message = svc.get_guardian_data()
