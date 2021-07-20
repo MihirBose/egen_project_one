@@ -38,7 +38,6 @@ class PublishToPubsub:
     def get_guardian_data(self) -> str:
 
         params = {
-            #"api-key" : "d36c74d5-11af-4020-a0d1-988489020d11"
             self.secret_id : self.access_secret_version()
         }
         ses = Session()
@@ -78,5 +77,4 @@ if __name__ == "__main__":
         svc = PublishToPubsub()
         message = svc.get_guardian_data()
         svc.publish_message_to_topic(message)
-        #print (message)
         sleep(3)
