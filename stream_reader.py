@@ -72,9 +72,9 @@ class PublishToPubsub:
 
 if __name__ == "__main__":
 
-    for i in range(5):
-        print (f"hello!!!")
-        svc = PublishToPubsub()
-        message = svc.get_guardian_data()
-        svc.publish_message_to_topic(message)
-        sleep(3)
+    # for i in range(2):
+    print (f"hello!!!")
+    svc = PublishToPubsub()
+    message = svc.get_guardian_data()
+    svc.publish_message_to_topic(message)
+    #sleep(3)
