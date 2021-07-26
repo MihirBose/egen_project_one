@@ -77,4 +77,4 @@ if __name__ == "__main__":
     svc = PublishToPubsub()
     message = svc.get_guardian_data()
     svc.publish_message_to_topic(message)
-    #sleep(3)
+    sleep(5)
